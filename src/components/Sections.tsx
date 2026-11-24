@@ -248,17 +248,6 @@ export function ContactSection() {
   )
 }
 
-export function Footer() {
-  return (
-    <footer>
-      <div className="container">
-        <div className="footer-brand"><div><Activity size={16} /></div><div><strong>Manonfi Stanislas AGOUNFON</strong><span>Électromécanicien • Sékou (Bénin)</span></div></div>
-        <p>© {new Date().getFullYear()} Manonfi Stanislas AGOUNFON</p>
-      </div>
-    </footer>
-  )
-}
-
 function SectionHeading({ overline, title }: { overline: string; title: string }) {
   return (
     <div className="section-heading"><h2>{overline}</h2><p>{title}</p><span /></div>
