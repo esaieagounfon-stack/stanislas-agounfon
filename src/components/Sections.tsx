@@ -70,6 +70,16 @@ export function Presentation() {
 export function Expertise() {
   const [activeTab, setActiveTab] = useState('all')
   const filtered = activeTab === 'all' ? skills : skills.filter((skill) => skill.category === activeTab)
+  const skillImages = [
+    '/images/realisation-piece-mecanique.jpg',
+    '/images/exp-btc-cellule-htbt.jpg',
+    '/images/expertise-moteurs-linix.jpg',
+    '/images/outils-baie-critique-ups.jpg',
+    '/images/realisation-depannage-ligne.jpg',
+    '/images/expertise-motoreducteur.jpg',
+    '/images/expertise-cablage-armoire.jpg',
+    '/images/exp-maintenance-automate.jpg',
+  ]
 
   return (
     <section id="expertises" className="section section-dark">
@@ -85,8 +95,10 @@ export function Expertise() {
         <div className="skills-grid">
           {filtered.map((skill) => {
             const Icon = skill.icon
+            const image = skillImages[skills.indexOf(skill)]
             return (
               <article className="skill-card" key={skill.title}>
+                <img className="skill-card-image" src={image} alt="" loading="lazy" />
                 <div className="icon-box"><Icon size={24} /></div>
                 <h3>{skill.title}</h3>
                 <p>{skill.desc}</p>
@@ -101,13 +113,19 @@ export function Expertise() {
 }
 
 export function Experiences() {
+  const experienceImages = [
+    '/images/exp-btc-cellule-htbt.jpg',
+    '/images/exp-maintenance-automate.jpg',
+    '/images/realisation-lignes-chantier.jpg',
+  ]
   return (
     <section id="experiences" className="section">
       <div className="container">
         <SectionHeading overline="Chronologie de terrain" title="Expériences professionnelles" />
         <div className="experience-list">
-          {experiences.map((experience) => (
+          {experiences.map((experience, index) => (
             <article className="experience-card" key={`${experience.period}-${experience.title}`}>
+              <img className="experience-image" src={experienceImages[index]} alt={experience.title} />
               <header>
                 <div>
                   <span className="period">{experience.period}</span>
@@ -156,13 +174,22 @@ export function EducationSection() {
 }
 
 export function ToolsSection() {
+  const toolImages = [
+    '/images/outils-diagnostic-atelier.jpg',
+    '/images/expertise-cablage-armoire.jpg',
+    '/images/outils-diagnostic-atelier.jpg',
+    '/images/outils-testeur-electronique.jpg',
+    '/images/outils-diagnostic-atelier.jpg',
+    '/images/outils-baie-critique-ups.jpg',
+  ]
   return (
     <section id="outils" className="section">
       <div className="container">
         <SectionHeading overline="Maîtrise logicielle & appareils" title="Outils & matériel technique" />
         <div className="tools-grid">
-          {tools.map((tool) => (
+          {tools.map((tool, index) => (
             <article className="tool-card" key={tool.name}>
+              <img className="tool-card-image" src={toolImages[index]} alt="" loading="lazy" />
               <div className="icon-box small">{tool.category === 'Software' ? <Terminal size={20} /> : <Settings size={20} />}</div>
               <div><div className="tool-title"><h3>{tool.name}</h3><span>{tool.category}</span></div><p className="tool-type">{tool.type}</p><p>{tool.desc}</p></div>
             </article>

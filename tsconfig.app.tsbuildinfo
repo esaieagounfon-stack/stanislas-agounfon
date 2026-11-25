@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/main.tsx","./src/types.ts","./src/components/cvmodal.tsx","./src/components/header.tsx","./src/components/sections.tsx","./src/components/ui/paper-plane-drawer-footer.tsx","./src/data/portfolio.ts"],"version":"5.7.3"}
+{"root":["./src/app.tsx","./src/main.tsx","./src/types.ts","./src/components/cvmodal.tsx","./src/components/header.tsx","./src/components/sections.tsx","./src/components/ui/fluid-trail.tsx","./src/components/ui/paper-plane-drawer-footer.tsx","./src/data/portfolio.ts"],"version":"5.7.3"}

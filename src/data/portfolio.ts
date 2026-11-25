@@ -19,19 +19,19 @@ export const mediaShowcase: MediaItem[] = [
   {
     title: 'Maintenance Réseaux HT / BT',
     subtitle: 'Bénin Textile Corporation',
-    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop',
+    image: '/images/apropos-portrait-armoire.jpg',
     tag: 'Électromécanique Industrielle',
   },
   {
     title: 'Diagnostic & Automatismes',
     subtitle: 'TIA Portal & Armoires de Puissance',
-    image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=1200&auto=format&fit=crop',
+    image: '/images/expertise-cablage-armoire.jpg',
     tag: 'Commandes & Moteurs',
   },
   {
     title: 'Groupes Électrogènes & UPS',
     subtitle: 'Gestion des Systèmes Critiques',
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop',
+    image: '/images/outils-baie-critique-ups.jpg',
     tag: 'Sécurité & Énergie',
   },
 ]
