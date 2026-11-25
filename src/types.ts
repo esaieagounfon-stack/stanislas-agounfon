@@ -51,4 +51,5 @@ export type ContactForm = {
   subject: string
   requestType: string
   message: string
+  channel: 'whatsapp' | 'email'
 }

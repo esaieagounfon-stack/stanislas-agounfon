@@ -398,7 +398,7 @@ function __OriginkitBase_FluidSim(props: any) {
         let curl: ReturnType<typeof createFBO>
 
         function getResolution(target: number) {
-            const aspect = canvasEl.clientWidth / Math.max(1, canvasEl.clientHeight)
+            const aspect = canvasEl.width / Math.max(1, canvasEl.height)
             const w = aspect >= 1 ? Math.round(target * aspect) : target
             const h = aspect >= 1 ? target : Math.round(target / aspect)
             return { w, h }

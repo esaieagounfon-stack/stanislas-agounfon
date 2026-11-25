@@ -3,6 +3,7 @@ import {
   Activity, Check, CheckCircle, ChevronRight, Compass, Download, Eye,
   Mail, MapPin, MessageSquare, Phone, Send, Settings, Terminal,
 } from 'lucide-react'
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa'
 import { education, experiences, mediaShowcase, skillCategories, skills, tools } from '../data/portfolio'
 import type { ContactForm } from '../types'
 
@@ -14,7 +15,7 @@ export function Hero({ onOpenCv }: CvProps) {
       <div className="hero-overlay" />
       <div className="hero-content">
         <div className="status-pill"><span /> Électromécanicien • Bénin Textile Corporation</div>
-        <h1>Manonfi Stanislas<br /><em>Agounfon</em></h1>
+        <h1>Manonfi<span className="hero-name-break"><br /></span> Stanislas<br /><em>Agounfon</em></h1>
         <p>Je mets mon expertise au service de la maintenance préventive et corrective des installations électriques industrielles HT / BT / TBT et des équipements motorisés.</p>
         <div className="hero-actions">
           <a className="button button-primary" href="#contact">Me contacter</a>
@@ -206,15 +207,22 @@ export function CvSection({ onOpenCv }: CvProps) {
       <div className="container">
         <div className="cv-banner">
           <div>
-            <span className="period">Document officiel PDF</span>
-            <h2>Téléchargez mon CV professionnel</h2>
-            <p>Découvrez mon parcours académique, mes missions chez BTC et mes coordonnées professionnelles.</p>
+            <span className="period">Document officiel • PDF</span>
+            <h2>Consultez mon CV complet</h2>
+            <p>Parcourez l’intégralité de mon parcours professionnel directement sur le site, ou téléchargez le document pour le conserver.</p>
             <div className="inline-actions">
-              <button type="button" className="button button-primary" onClick={onOpenCv}><Download size={16} />Télécharger CV PDF</button>
-              <button type="button" className="button button-secondary" onClick={onOpenCv}><Eye size={16} />Aperçu rapide</button>
+              <button type="button" className="button button-primary" onClick={onOpenCv}><Eye size={16} />Lire le CV complet</button>
+              <a className="button button-secondary" href="/documents/CV_Stanislas_AGOUNFON.pdf" download="CV_Stanislas_AGOUNFON.pdf"><Download size={16} />Télécharger le PDF</a>
             </div>
           </div>
-          <div className="cv-file"><Terminal size={48} /><p>CV_Stanislas_AGOUNFON.pdf</p><strong>Version officielle PDF</strong></div>
+          <div className="cv-file">
+            <iframe
+              src="/documents/CV_Stanislas_AGOUNFON.pdf#view=FitH"
+              title="Aperçu du CV de Manonfi Stanislas Agounfon"
+              loading="lazy"
+            />
+            <a href="/documents/CV_Stanislas_AGOUNFON.pdf" target="_blank" rel="noreferrer">Ouvrir le CV complet</a>
+          </div>
         </div>
       </div>
     </section>
@@ -224,17 +232,44 @@ export function CvSection({ onOpenCv }: CvProps) {
 export function ContactSection() {
   const [submitted, setSubmitted] = useState(false)
   const [formData, setFormData] = useState<ContactForm>({
-    name: '', email: '', subject: '', requestType: 'Offre d’emploi', message: '',
+    name: '', email: '', subject: '', requestType: 'Offre d’emploi', message: '', channel: 'whatsapp',
   })
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = event.target
+    if (name === 'channel') {
+      setFormData((current) => ({
+        ...current,
+        channel: value === 'email' ? 'email' : 'whatsapp',
+      }))
+      return
+    }
     setFormData((current) => ({ ...current, [name]: value }))
   }
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) return
+
+    const subject = formData.subject.trim() || formData.requestType
+    const message = [
+      `Bonjour Manonfi Stanislas AGOUNFON,`,
+      '',
+      `Type de demande : ${formData.requestType}`,
+      `Nom : ${formData.name}`,
+      `Adresse e-mail : ${formData.email}`,
+      `Objet : ${subject}`,
+      '',
+      'Message :',
+      formData.message,
+    ].join('\n')
+
+    if (formData.channel === 'whatsapp') {
+      window.open(`https://wa.me/2290198237168?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer')
+    } else {
+      window.location.href = `mailto:manonfiagounfon@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`
+    }
+
     setSubmitted(true)
   }
 
@@ -249,11 +284,17 @@ export function ContactSection() {
             <a href="https://wa.me/2290198237168" target="_blank" rel="noreferrer"><div className="icon-box small"><MessageSquare size={19} /></div><div><span>Appel & WhatsApp</span><strong>+229 01 98 23 71 68</strong></div></a>
             <a href="mailto:manonfiagounfon@gmail.com"><div className="icon-box small"><Mail size={19} /></div><div><span>E-mail officiel</span><strong>manonfiagounfon@gmail.com</strong></div></a>
             <div><div className="icon-box small"><MapPin size={19} /></div><div><span>Résidence</span><strong>Sékou (Bénin)</strong></div></div>
+            <div className="social-links" aria-label="Réseaux sociaux">
+              <a href="https://www.facebook.com/stanislas.agounfon" target="_blank" rel="noreferrer" aria-label="Facebook"><FaFacebookF /></a>
+              <a href="https://wa.me/2290198237168" target="_blank" rel="noreferrer" aria-label="WhatsApp"><FaWhatsapp /></a>
+              <a href="https://www.linkedin.com/in/stanislas-agounfon-13a4392a3" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
+              <a href="https://www.instagram.com/stanislasagounfon" target="_blank" rel="noreferrer" aria-label="Instagram"><FaInstagram /></a>
+            </div>
           </div>
           <div className="contact-form-card">
             <h3>Envoyer une demande</h3>
             {submitted ? (
-              <div className="success-message"><CheckCircle size={38} /><h4>Message prêt à être envoyé</h4><p>Merci pour votre prise de contact. Le formulaire local peut être relié à un service d’e-mail ou API.</p><button type="button" className="button button-secondary" onClick={() => setSubmitted(false)}>Nouvelle demande</button></div>
+              <div className="success-message"><CheckCircle size={38} /><h4>Demande envoyée</h4><p>Votre demande a été bien envoyée à Mr Stanislas Agounfon.</p><button type="button" className="button button-secondary" onClick={() => setSubmitted(false)}>Nouvelle demande</button></div>
             ) : (
               <form onSubmit={handleSubmit}>
                 <div className="form-row">
@@ -265,7 +306,20 @@ export function ContactSection() {
                   <label>Objet<input name="subject" value={formData.subject} onChange={handleChange} placeholder="Sujet de votre message" /></label>
                 </div>
                 <label>Message *<textarea name="message" required rows={5} value={formData.message} onChange={handleChange} placeholder="Précisez votre demande..." /></label>
-                <button type="submit" className="button button-primary submit-button"><Send size={16} />Transmettre le message</button>
+                <fieldset className="contact-channel">
+                  <legend>Envoyer via</legend>
+                  <label>
+                    <input type="radio" name="channel" value="whatsapp" checked={formData.channel === 'whatsapp'} onChange={handleChange} />
+                    <MessageSquare size={16} />
+                    WhatsApp
+                  </label>
+                  <label>
+                    <input type="radio" name="channel" value="email" checked={formData.channel === 'email'} onChange={handleChange} />
+                    <Mail size={16} />
+                    E-mail
+                  </label>
+                </fieldset>
+                <button type="submit" className="button button-primary submit-button"><Send size={16} />Envoyer via {formData.channel === 'whatsapp' ? 'WhatsApp' : 'E-mail'}</button>
               </form>
             )}
           </div>

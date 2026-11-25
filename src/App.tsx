@@ -64,7 +64,7 @@ export default function App() {
         <ContactSection />
       </main>
       <PaperPlaneDrawerFooter
-        brand="AGOUNFON"
+        brand="Stanislas Agounfon"
         copyright={`© ${new Date().getFullYear()} Manonfi Stanislas AGOUNFON`}
         tagline={'Électromécanicien industriel\nSékou, Bénin'}
         height="520px"

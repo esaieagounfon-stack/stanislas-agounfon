@@ -20,7 +20,7 @@ export function Header({ mobileMenuOpen, onToggleMenu, onCloseMenu, onOpenCv }: 
           <Zap size={14} fill="currentColor" />
         </a>
         <a href="#contact" className="nav-contact">
-          <span>Renseigner</span>
+          <span>Contact</span>
           <ArrowRight size={13} />
         </a>
       </nav>

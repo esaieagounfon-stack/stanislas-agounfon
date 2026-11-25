@@ -1,4 +1,5 @@
-import { useEffect, useId, useRef, type CSSProperties } from 'react'
+import { useEffect, useId, useRef, useState, type CSSProperties } from 'react'
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa'
 
 export const OPEN_MS = 630
 export const CLOSE_MS = 370
@@ -122,13 +123,15 @@ const CSS =
   '.ppd-plane,.ppd-shadow{position:absolute;left:0;top:0;pointer-events:none;transform-origin:50% 50%;opacity:0}.ppd-shadow{filter:blur(3px)}' +
   '.ppd-front{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;background:var(--ppd-face);padding-bottom:clamp(20px,3.2vw,48px)}' +
   '.ppd-lip{position:absolute;left:0;right:0;top:-1px;height:3px;background:linear-gradient(90deg,transparent,var(--ppd-lo) 12%,var(--ppd-lo) 88%,transparent);box-shadow:0 1px 0 var(--ppd-hi)}' +
-  '.ppd-handle{position:relative;display:block;margin:clamp(14px,2.1vw,26px) auto 0;width:clamp(96px,13vw,220px);height:clamp(26px,3.1vw,52px);border:0;padding:0;border-radius:999px;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}.ppd-handle:focus-visible{outline:2px solid var(--ppd-ink);outline-offset:4px}' +
+  '.ppd-handle{position:relative;display:block;margin:clamp(14px,2.1vw,26px) auto 0;width:clamp(96px,13vw,220px);height:clamp(44px,3.1vw,52px);border:0;padding:0;border-radius:999px;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}.ppd-handle:focus-visible{outline:2px solid var(--ppd-ink);outline-offset:4px}' +
   '.ppd-skin{position:absolute;inset:0;border-radius:inherit}.ppd-recess{background:linear-gradient(90deg,#4f4236,#7d6b58 50%,#4f4236);box-shadow:inset 0 3px 6px rgba(0,0,0,.45),0 1px 0 var(--ppd-hi)}.ppd-pull{background:linear-gradient(#f5e9d3,#e8d6b6);box-shadow:inset 0 -2px 0 rgba(120,90,55,.35),0 4px 8px -2px rgba(60,40,20,.35);display:flex;align-items:center;justify-content:flex-end;padding-right:9%}.ppd-pull svg{width:18%;height:auto;opacity:.5}' +
   '.ppd-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px;row-gap:36px;padding:0 var(--ppd-gutter);margin-top:clamp(32px,4.4vw,72px)}.ppd-brand{grid-column:1/-1}' +
   '@media (min-width:768px){.ppd-root{--ppd-gutter:clamp(20px,14vw,260px)}.ppd-grid{grid-template-columns:1.8fr 1fr 1fr .8fr}.ppd-brand{grid-column:auto}}' +
   '.ppd-copy{margin:0;font-size:11px;line-height:16px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--ppd-accent)}.ppd-tag{margin:14px 0 0;font-size:13px;line-height:18px;color:var(--ppd-muted);white-space:pre-line}' +
+  '.ppd-socials{display:flex;gap:10px;margin-top:16px}.ppd-socials a{width:44px;height:44px;display:grid;place-items:center;border:1px solid color-mix(in oklab,var(--ppd-ink) 18%,transparent);border-radius:50%;color:var(--ppd-ink);transition:background .2s,color .2s,transform .2s}.ppd-socials a:hover{background:var(--ppd-ink);color:var(--ppd-face);transform:translateY(-2px)}.ppd-socials a:focus-visible,.ppd-call:focus-visible{outline:2px solid var(--ppd-ink);outline-offset:3px}' +
+  '.ppd-contact{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;opacity:0;transform:translateY(8px);visibility:hidden;transition:opacity .35s ease,transform .35s ease,visibility 0s linear .35s}.ppd-contact.is-visible{opacity:1;transform:translateY(0);visibility:visible;transition:opacity .35s ease,transform .35s ease}.ppd-contact-message{margin:0;font-size:13px;line-height:1.5;color:var(--ppd-ink)}.ppd-call{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:999px;background:var(--ppd-accent);color:#fff;font-size:12px;font-weight:700;text-decoration:none;transition:transform .2s,filter .2s}.ppd-call:hover{transform:translateY(-2px);filter:brightness(1.08)}' +
   '.ppd-col h3{margin:0;font-size:14px;line-height:20px;font-weight:500;color:var(--ppd-ink)}.ppd-col ul{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:4px}.ppd-col a{display:inline-block;font-size:13px;line-height:20px;color:var(--ppd-muted);text-decoration:none;transition:color .2s}.ppd-col a:hover{color:var(--ppd-ink)}.ppd-col a:focus-visible{outline:2px solid var(--ppd-ink);outline-offset:2px;border-radius:2px}' +
-  '.ppd-word{display:block;width:100%;height:auto;margin-top:auto;padding:clamp(40px,6vw,96px) var(--ppd-gutter) 0}@media (prefers-reduced-motion:reduce){.ppd-col a{transition:none}}'
+  '.ppd-word{display:block;width:100%;height:auto;margin-top:auto;padding:clamp(40px,6vw,96px) var(--ppd-gutter) 0}@media (prefers-reduced-motion:reduce){.ppd-col a,.ppd-socials a,.ppd-contact,.ppd-call{transition:none}}'
 
 type PlaneState = { state: 'hidden' | 'flying' | 'landed'; t0: number }
 
@@ -145,6 +148,8 @@ export default function PaperPlaneDrawerFooter({
   className = '',
   style,
 }: PaperPlaneDrawerFooterProps) {
+  const [drawerOpen, setDrawerOpen] = useState(defaultOpen)
+  const [contactPromptVisible, setContactPromptVisible] = useState(false)
   const rootRef = useRef<HTMLElement>(null)
   const boxRef = useRef<HTMLDivElement>(null)
   const floorRef = useRef<HTMLDivElement>(null)
@@ -158,6 +163,19 @@ export default function PaperPlaneDrawerFooter({
   const fid = 'ppd-press-' + useId().replace(/[^a-zA-Z0-9_-]/g, '')
   const onChange = useRef(onOpenChange)
   onChange.current = onOpenChange
+
+  useEffect(() => {
+    if (!drawerOpen) {
+      setContactPromptVisible(false)
+      return
+    }
+
+    setContactPromptVisible(true)
+    const interval = window.setInterval(() => {
+      setContactPromptVisible((visible) => !visible)
+    }, 3000)
+    return () => window.clearInterval(interval)
+  }, [drawerOpen])
 
   useEffect(() => {
     const root = rootRef.current!
@@ -261,6 +279,7 @@ export default function PaperPlaneDrawerFooter({
       target = next
       handle.setAttribute('aria-expanded', String(open))
       handle.setAttribute('aria-label', open ? 'Fermer le tiroir' : 'Ouvrir le tiroir')
+      setDrawerOpen(open)
       if (open) launchAt = performance.now() + (reduce.matches ? 0 : LAUNCH_MS)
       else launchAt = -1
       onChange.current?.(open)
@@ -279,15 +298,15 @@ export default function PaperPlaneDrawerFooter({
         sync()
       },
       togglePin: () => {
-        const open = target === 1
-        pinned = !open
-        if (open) {
+        if (pinned) {
+          pinned = false
           hover = false
           suppress = true
           window.clearTimeout(closeTimer)
           setTarget(false)
           return
         }
+        pinned = true
         sync()
       },
     }
@@ -368,6 +387,24 @@ export default function PaperPlaneDrawerFooter({
           <div className="ppd-brand">
             <p className="ppd-copy">{copyright}</p>
             <p className="ppd-tag">{tagline}</p>
+            <div className="ppd-socials" aria-label="Réseaux sociaux">
+              <a href="https://www.facebook.com/stanislas.agounfon" target="_blank" rel="noreferrer" aria-label="Facebook">
+                <FaFacebookF aria-hidden="true" />
+              </a>
+              <a href="https://wa.me/2290198237168" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+                <FaWhatsapp aria-hidden="true" />
+              </a>
+              <a href="https://www.linkedin.com/in/stanislas-agounfon-13a4392a3" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                <FaLinkedinIn aria-hidden="true" />
+              </a>
+              <a href="https://www.instagram.com/stanislasagounfon" target="_blank" rel="noreferrer" aria-label="Instagram">
+                <FaInstagram aria-hidden="true" />
+              </a>
+            </div>
+            <div className={'ppd-contact' + (contactPromptVisible ? ' is-visible' : '')} aria-hidden={!contactPromptVisible}>
+              <p className="ppd-contact-message">Contactez-moi directement, votre électromécanicien à votre service</p>
+              <a className="ppd-call" href="tel:+2290141574843" tabIndex={contactPromptVisible ? 0 : -1}>Appeler directement</a>
+            </div>
           </div>
           {columns.map((col) => (
             <nav key={col.title} className="ppd-col" aria-label={col.title}>
