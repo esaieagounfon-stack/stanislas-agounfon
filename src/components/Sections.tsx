@@ -14,15 +14,15 @@ export function Hero({ onOpenCv }: CvProps) {
       <div className="hero-overlay" />
       <div className="hero-content">
         <div className="status-pill"><span /> Électromécanicien • Bénin Textile Corporation</div>
-        <h1>Électro<br /><em>Mécanisme</em></h1>
-        <p>Expertise en maintenance préventive et corrective des installations électriques industrielles HT / BT / TBT et équipements motorisés.</p>
+        <h1>Manonfi Stanislas<br /><em>Agounfon</em></h1>
+        <p>Je mets mon expertise au service de la maintenance préventive et corrective des installations électriques industrielles HT / BT / TBT et des équipements motorisés.</p>
         <div className="hero-actions">
           <a className="button button-primary" href="#contact">Me contacter</a>
           <button type="button" className="button button-glass" onClick={onOpenCv}><Download size={16} />Consulter le CV PDF</button>
         </div>
       </div>
       <div className="side-badge" aria-hidden="true">
-        <span>BELGRADE</span>
+        <span>BÉNIN</span>
         <strong>MANONFI STANISLAS AGOUNFON</strong>
         <i />
       </div>
@@ -40,8 +40,8 @@ export function Presentation() {
         <p className="eyebrow">Stanislas Agounfon • Électromécanique</p>
         <div className="presentation-grid">
           <div className="presentation-copy">
-            <h2>L’expertise technique et la <em>maintenance industrielle</em> s’appuient sur une rigueur exemplaire.</h2>
-            <p>Basé à Sékou (Bénin) et en poste à <strong>Bénin Textile Corporation (BTC)</strong>, Stanislas intervient sur le diagnostic, la prévention des pannes, les transformateurs, les armoires de distribution et les sources de secours.</p>
+            <h2>Je mets mon <em>savoir-faire industriel</em> au cœur de chaque intervention.</h2>
+            <p>Basé à Sékou (Bénin) et en poste à <strong>Bénin Textile Corporation (BTC)</strong>, j’interviens sur le diagnostic, la prévention des pannes, les transformateurs, les armoires de distribution et les sources de secours.</p>
             <div className="inline-actions">
               <a className="button button-secondary" href="#expertises"><Compass size={16} />Explorer en détail</a>
               <span>Diplômé ENSGEP 2024</span>
@@ -207,8 +207,8 @@ export function CvSection({ onOpenCv }: CvProps) {
         <div className="cv-banner">
           <div>
             <span className="period">Document officiel PDF</span>
-            <h2>Télécharger le CV professionnel</h2>
-            <p>Consultez la synthèse complète du parcours académique, des missions chez BTC et des coordonnées professionnelles.</p>
+            <h2>Téléchargez mon CV professionnel</h2>
+            <p>Découvrez mon parcours académique, mes missions chez BTC et mes coordonnées professionnelles.</p>
             <div className="inline-actions">
               <button type="button" className="button button-primary" onClick={onOpenCv}><Download size={16} />Télécharger CV PDF</button>
               <button type="button" className="button button-secondary" onClick={onOpenCv}><Eye size={16} />Aperçu rapide</button>

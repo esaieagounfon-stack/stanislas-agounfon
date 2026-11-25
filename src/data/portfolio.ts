@@ -43,17 +43,17 @@ export const experiences: Experience[] = [
     company: 'Bénin Textile Corporation (BTC)',
     location: 'Sékou / Bénin',
     badge: 'Poste Actuel (CDI)',
-    description: 'Pilotage complet de la sécurité opérationnelle, de la maintenance préventive et corrective de l’ensemble du parc électrique et électromécanique de l’usine.',
+    description: 'Je pilote la sécurité opérationnelle ainsi que la maintenance préventive et corrective de l’ensemble du parc électrique et électromécanique de l’usine.',
     missions: [
-      'Maintenance préventive et corrective des installations électriques industrielles',
-      'Exploitation et maintenance des réseaux HT, BT et TBT',
-      'Suivi des transformateurs, jeux de barres et systèmes de mise à la terre',
-      'Tests d’isolement et mise en service d’équipements industriels',
-      'Suivi des UPS, groupes électrogènes et centrales d’alarme incendie',
-      'Installation et mise en service de nouvelles lignes de production',
-      'Diagnostic des moteurs électriques et équipements électromécaniques',
-      'Rédaction des rapports d’intervention',
-      'Application des normes de sécurité industrielle et procédures HSE',
+      'Je réalise la maintenance préventive et corrective des installations électriques industrielles',
+      'J’exploite et maintiens les réseaux HT, BT et TBT',
+      'Je suis les transformateurs, les jeux de barres et les systèmes de mise à la terre',
+      'Je réalise les tests d’isolement et les mises en service d’équipements industriels',
+      'Je maintiens les UPS, les groupes électrogènes et les centrales d’alarme incendie',
+      'J’installe et mets en service de nouvelles lignes de production',
+      'Je diagnostique les moteurs électriques et les équipements électromécaniques',
+      'Je rédige mes rapports d’intervention',
+      'J’applique les normes de sécurité industrielle et les procédures HSE',
     ],
   },
   {
@@ -62,11 +62,11 @@ export const experiences: Experience[] = [
     company: 'Atelier Technique Spécialisé',
     location: 'Bénin',
     badge: 'Stage Professionnel',
-    description: 'Diagnostic technique, mécanique lourde et électronique appliquée aux systèmes embarqués.',
+    description: 'J’ai réalisé des diagnostics techniques sur les systèmes mécaniques lourds et électroniques embarqués.',
     missions: [
-      'Maintenance préventive et réparation de véhicules légers',
-      'Diagnostic des calculateurs moteur et capteurs électroniques',
-      'Soudure à l’arc électrique et soudure autogène',
+      'J’ai effectué la maintenance préventive et la réparation de véhicules légers',
+      'J’ai diagnostiqué les calculateurs moteur et les capteurs électroniques',
+      'J’ai réalisé des soudures à l’arc électrique et des soudures autogènes',
     ],
   },
   {
@@ -75,11 +75,11 @@ export const experiences: Experience[] = [
     company: 'Entreprise d’Électricité & Climatisation',
     location: 'Bénin',
     badge: 'Stage Initial',
-    description: 'Réalisation d’installations électriques tertiaires et maintenance de systèmes thermiques.',
+    description: 'J’ai réalisé des installations électriques tertiaires et assuré la maintenance de systèmes thermiques.',
     missions: [
-      'Réalisation d’installations électriques conformes',
-      'Installation et entretien de systèmes de climatisation',
-      'Câblage et paramétrage d’antennes satellitaires',
+      'J’ai réalisé des installations électriques conformes',
+      'J’ai installé et entretenu des systèmes de climatisation',
+      'J’ai câblé et paramétré des antennes satellitaires',
     ],
   },
 ]
@@ -101,14 +101,14 @@ export const skillCategories: SkillCategory[] = [
 ]
 
 export const skills: Skill[] = [
-  { category: 'maint', title: 'Maintenance Préventive & Corrective', desc: 'Interventions curatives d’urgence et plan de maintenance préventive usine.', icon: Wrench, highlight: 'Usine Textile' },
-  { category: 'elec', title: 'Exploitation HT, BT & TBT', desc: 'Gestion des jeux de barres, réseaux haute/basse tension et équilibrage des phases.', icon: Zap, highlight: 'Réseaux de Puissance' },
-  { category: 'electro', title: 'Diagnostic Moteurs Électriques', desc: 'Détection des défauts de bobinage, mesure d’isolement et câblage d’armoires.', icon: Cpu, highlight: 'Électrotechnique' },
-  { category: 'critique', title: 'Groupes Électrogènes & Onduleurs UPS', desc: 'Continuité de service en coupure réseau et maintenance des sources de secours.', icon: Activity, highlight: 'Systèmes Critiques' },
-  { category: 'maint', title: 'Rédaction de Rapports Techniques', desc: 'Compte-rendu d’intervention, suivi des pannes et respect des consignes qualité.', icon: FileText, highlight: 'Suivi Qualité' },
-  { category: 'elec', title: 'Systèmes de Mise à la Terre & Transfos', desc: 'Contrôle des transformateurs, boucles de terre et protections différentielles.', icon: ShieldCheck, highlight: 'Normes de Sécurité' },
-  { category: 'electro', title: 'Lecture & Schémathèque', desc: 'Interprétation de schémas électriques unifilaires et multifilaires.', icon: Layers, highlight: 'AutoCAD / Proteus' },
-  { category: 'critique', title: 'Centrales Alarme Incendie', desc: 'Maintenance des boucles de détection, centrales, sirènes et équipements associés.', icon: Radio, highlight: 'Protection Établissement' },
+  { category: 'maint', title: 'Maintenance Préventive & Corrective', desc: 'Je planifie les opérations préventives et réalise rapidement les interventions curatives sur les équipements de l’usine.', icon: Wrench, highlight: 'Usine Textile' },
+  { category: 'elec', title: 'Exploitation HT, BT & TBT', desc: 'Je gère les jeux de barres, les réseaux haute/basse tension et l’équilibrage des phases.', icon: Zap, highlight: 'Réseaux de Puissance' },
+  { category: 'electro', title: 'Diagnostic Moteurs Électriques', desc: 'Je détecte les défauts de bobinage, mesure l’isolement et réalise les câblages d’armoires.', icon: Cpu, highlight: 'Électrotechnique' },
+  { category: 'critique', title: 'Groupes Électrogènes & Onduleurs UPS', desc: 'Je maintiens les sources de secours pour assurer la continuité de service en cas de coupure réseau.', icon: Activity, highlight: 'Systèmes Critiques' },
+  { category: 'maint', title: 'Rédaction de Rapports Techniques', desc: 'Je rédige mes comptes rendus d’intervention et assure le suivi des pannes et des actions qualité.', icon: FileText, highlight: 'Suivi Qualité' },
+  { category: 'elec', title: 'Systèmes de Mise à la Terre & Transfos', desc: 'Je contrôle les transformateurs, les boucles de terre et les protections différentielles.', icon: ShieldCheck, highlight: 'Normes de Sécurité' },
+  { category: 'electro', title: 'Lecture & Schémathèque', desc: 'Je lis les schémas électriques unifilaires et multifilaires pour diagnostiquer et intervenir avec précision.', icon: Layers, highlight: 'AutoCAD / Proteus' },
+  { category: 'critique', title: 'Centrales Alarme Incendie', desc: 'Je maintiens les boucles de détection, centrales, sirènes et équipements associés à la sécurité.', icon: Radio, highlight: 'Protection Établissement' },
 ]
 
 export const tools: Tool[] = [
